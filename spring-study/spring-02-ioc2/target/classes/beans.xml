@@ -15,9 +15,11 @@
 <!--        <constructor-arg type="java.lang.String" value="Chuck"/>-->
 <!--    </bean>-->
 
-    <!-- 3. Constructor Argument Resolution -->
+<!--    &lt;!&ndash; 3. Constructor Argument Resolution &ndash;&gt;-->
     <bean id="user" class="com.vnborx.pojo.User">
         <constructor-arg name="name" value="Chuck"/>
     </bean>
+
+    <bean id="user2" class="com.vnborx.pojo.User2"/>
 
 </beans>
