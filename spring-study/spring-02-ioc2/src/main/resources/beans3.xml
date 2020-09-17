@@ -25,7 +25,7 @@
     <alias name="user" alias="userAlias"/>
 
     <!-- 'name' here can be used to set multiple aliases -->
-    <bean id="user2" class="com.vnborx.pojo.User2" name="userA userB,userC;userD">
+    <bean id="user2" class="com.vnborx.pojo.User2" name="userE">
         <property name="name" value="Alice"/>
     </bean>
 
