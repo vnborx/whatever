@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- p-namespace injection (property) -->
+    <bean id="user" class="com.vnborx.pojo.User" p:name="Acacia" p:age="22"/>
+    <!-- c-namespace injection (constructor) -->
+    <bean id="user2" class="com.vnborx.pojo.User" c:age="22" c:name="Acacia"/>
+
+</beans>

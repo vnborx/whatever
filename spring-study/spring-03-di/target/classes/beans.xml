@@ -4,6 +4,7 @@
        xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
     <bean name="address" class="com.vnborx.pojo.Address">
         <property name="address" value="Los Angeles"/>
     </bean>
