@@ -4,8 +4,54 @@
        xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+    <bean name="address" class="com.vnborx.pojo.Address">
+        <property name="address" value="Los Angeles"/>
+    </bean>
     <bean id="student" class="com.vnborx.pojo.Student">
+        <!-- Normal Injection -->
         <property name="name" value="Acacia"/>
+        <!-- Bean Injection -->
+        <property name="address" ref="address"/>
+        <!-- Array -->
+        <property name="books">
+            <array>
+                <value>book1</value>
+                <value>book2</value>
+                <value>book3</value>
+                <value>book4</value>
+            </array>
+        </property>
+        <!-- List -->
+        <property name="hobbies">
+            <list>
+                <value>Music</value>
+                <value>Coding</value>
+                <value>Movies</value>
+            </list>
+        </property>
+        <!-- Map -->
+        <property name="card">
+            <map>
+                <entry key="ID Card" value="12345678"/>
+                <entry key="Debit Card" value="00001234"/>
+            </map>
+        </property>
+        <!-- Set -->
+        <property name="games">
+            <set>
+                <value>League of Legends</value>
+                <value>Counter-Strike</value>
+            </set>
+        </property>
+        <property name="wife">
+            <null/>
+        </property>
+        <property name="info">
+            <props>
+                <prop key="USC-ID">20200921</prop>
+                <prop key="Gender">Female</prop>
+            </props>
+        </property>
     </bean>
 
 </beans>
