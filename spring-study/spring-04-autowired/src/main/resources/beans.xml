@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="cat" class="com.vnborx.pojo.Cat"/>
+    <bean id="dog" class="com.vnborx.pojo.Dog"/>
+<!--    <bean id="person" class="com.vnborx.pojo.Person">-->
+<!--        <property name="name" value="Max"/>-->
+<!--        <property name="cat" ref="cat"/>-->
+<!--        <property name="dog" ref="dog"/>-->
+<!--    </bean>-->
+    <!-- byName: Find bean-id according to name indicated in set method -->
+    <!-- byName: Find bean-id according to type, only when one bean of that type exists -->
+
+    <bean id="person" class="com.vnborx.pojo.Person" autowire="byType">
+        <property name="name" value="Max"/>
+    </bean>
+
+
+</beans>
