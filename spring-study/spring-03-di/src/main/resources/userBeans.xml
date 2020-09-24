@@ -12,4 +12,6 @@
     <!-- c-namespace injection (constructor) -->
     <bean id="user2" class="com.vnborx.pojo.User" c:age="22" c:name="Acacia"/>
 
+    <bean id="user3" class="com.vnborx.pojo.User" p:age="24" p:name="Chuck" scope="prototype"/>
+
 </beans>
