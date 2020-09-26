@@ -1,4 +1,3 @@
-import com.vnborx.pojo.User;
 import com.vnborx.pojo.User2;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
