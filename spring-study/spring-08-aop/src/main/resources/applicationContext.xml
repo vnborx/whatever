@@ -16,7 +16,6 @@
     <bean id="afterLog" class="com.vnborx.log.AfterLog"/>
 
     <!-- Method 1 -->
-<!--    &lt;!&ndash; Configure AOP &ndash;&gt;-->
 <!--    <aop:config>-->
 <!--        <aop:pointcut id="pointcut" expression="execution(* com.vnborx.service.UserServiceImpl.*(..))"/>-->
 
@@ -25,13 +24,17 @@
 <!--    </aop:config>-->
 
     <!-- Method 2 -->
-    <bean id="diy" class="com.vnborx.diy.DiyPointcut"/>
-    <aop:config>
-        <aop:aspect ref="diy">
-            <aop:pointcut id="point" expression="execution(* com.vnborx.service.UserServiceImpl.*(..))"/>
-            <aop:before method="before" pointcut-ref="point"/>
-            <aop:after method="after" pointcut-ref="point"/>
-        </aop:aspect>
-    </aop:config>
+<!--    <bean id="diy" class="com.vnborx.diy.DiyPointcut"/>-->
+<!--    <aop:config>-->
+<!--        <aop:aspect ref="diy">-->
+<!--            <aop:pointcut id="point" expression="execution(* com.vnborx.service.UserServiceImpl.*(..))"/>-->
+<!--            <aop:before method="before" pointcut-ref="point"/>-->
+<!--            <aop:after method="after" pointcut-ref="point"/>-->
+<!--        </aop:aspect>-->
+<!--    </aop:config>-->
+
+    <!-- Method 3 -->
+    <bean id="annotationPointcut" class="com.vnborx.diy.AnnotationPointcut"/>
+    <aop:aspectj-autoproxy/>
 
 </beans>

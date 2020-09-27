@@ -6,6 +6,6 @@ public class MyTest {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         UserService userService = context.getBean("userService", UserService.class);
-        userService.create();
+        userService.delete();
     }
 }
