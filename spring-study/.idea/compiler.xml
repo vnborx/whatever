@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -11,6 +12,7 @@
         <module name="spring-08-aop" />
         <module name="spring-04-autowired" />
         <module name="spring-07-proxy" />
+        <module name="spring-10-transaction" />
         <module name="spring-05-annotation" />
         <module name="spring-01-ioc1" />
         <module name="spring-06-appconfig" />

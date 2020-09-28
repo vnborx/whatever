@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vnborx.mapper.DealerMapper">
+    <select id="selectDealer" resultType="Dealer">
+        SELECT * FROM kawasaki_motors.dealer
+    </select>
+
+    <insert id="createDealer" parameterType="Dealer">
+        INSERT INTO kawasaki_motors.dealer (dealer_id, dealer_name, city, province, telephone) VALUES (#{dealer_id}, #{dealer_name}, #{city}, #{province}, #{telephone})
+    </insert>
+
+    <delete id="deleteDealer" parameterType="int">
+        DELETE FROM kawasaki_motors.dealer where dealer_id=#{id}
+    </delete>
+</mapper>
