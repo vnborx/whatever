@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class Dealer {
-    private int id;
-    private String name;
+    private int dealer_id;
+    private String dealer_name;
     private String city;
 }
