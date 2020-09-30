@@ -1,11 +1,11 @@
-# 1. First Exploration of SpringBoot's Principle
+# 1. First Exploration of Spring Boot's Principle
 
 
 
 **Automatic configuration:**
 
 * spring-boot-dependencies: core dependencies are in parent project
-* We do not need to indicate the version when we add springboot dependencies, because of the existence of version repository in parent project
+* We do not need to indicate the version when we add Spring Boot dependencies, because of the existence of version repository in parent project
 
 
 
@@ -18,9 +18,9 @@
 </dependency>
 ```
 
-* it's actually the launch scene of SpringBoot
+* it's actually the launch scene of Spring Boot
 * e.g. Spring-boot-starter-web will import all dependencies for web environment
-* Springboot makes all functional scenarios as starters
+* Spring Boot makes all functional scenarios as starters
 * We only need to find the corresponding `starter` for what function we want to use
 
 
@@ -38,8 +38,8 @@ public class Springboot01HelloworldApplication {
 
 
 
-* `@SpringBootApplication` marks the current program as a SpringBoot application
-  * Contains `@SpringBootConfiguration` - configuration of SpringBoot, which contains `@Configuration` - configuration of Spring, which contains `@Component` - a component of Spring
+* `@SpringBootApplication` marks the current program as a Spring Boot application
+  * Contains `@SpringBootConfiguration` - configuration of Spring Boot, which contains `@Configuration` - configuration of Spring, which contains `@Component` - a component of Spring
   * Contains `@EnableAutoConfiguration` - automatic configuration, which contains `@AutoConfigurationPackage` that `@Import({Registrar.class})`, and `@Import({AutoConfigurationImportSelector.class})`, which has the following code:
 
 ```java
@@ -60,5 +60,56 @@ protected List<String> getCandidateConfigurations(AnnotationMetadata metadata, A
 
 
 
-**All configurations are scanned and loaded when SpringBoot starts. All configuration classes of `spring.factories` are contained, but they only work when their corresponding `starter` is included in the configuration file.**
+**All configurations are scanned and loaded when Spring Boot starts. All configuration classes of `spring.factories` are contained, but they only work when their corresponding `starter` is included in the configuration file.**
+
+
+
+# 2. YAML configuration file
+
+
+
+Spring Boot uses a global configuration file, which has a **fixed** name.
+
+* application.properties
+  * Syntax: key=value
+* application.yaml (.yml) (Recommended)
+  * Syntax: key: value (a blank space must exists)
+
+Usage of configuration file: modifies the default setting of Spring Boot, which are set automatically by Spring Boot.
+
+
+
+**YAML** - YAML Ain't Markup Language
+
+Syntax of YAML file: (**Indenting is very important as it represents a hierarchical relationship**)
+
+```yaml
+# Normal key-value pair
+name: Acacia
+
+# Object
+student:
+  name: Acacia
+  age: 22
+
+# One-line object
+student: {name: Acacia, age: 22}
+
+# Array
+pets:
+  - cat
+  - dog
+  - pig
+
+# One-line array
+pets: [cat, dog, pig]
+```
+
+
+
+YAML can directly assign value to entity classes, with the following annotation given in entity classes.
+
+```java
+@ConfigurationProperties(prefix = "xxx")
+```
 

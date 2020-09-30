@@ -1,0 +1,14 @@
+person:
+  name: Acacia ${random.uuid}
+  age: 22
+  happy: false
+  birth: 2019/11/02
+  map: {k1: v1, k2: v2}
+
+  list:
+    - code
+    - music
+    - dog
+  dog:
+    name: ${person.aNonExistentProperty:Milo}
+    age: 3
