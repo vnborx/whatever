@@ -113,3 +113,4 @@ YAML can directly assign value to entity classes, with the following annotation 
 @ConfigurationProperties(prefix = "xxx")
 ```
 
+And it supports loose bind, e.g. lastName can match last-name.
