@@ -64,7 +64,7 @@ protected List<String> getCandidateConfigurations(AnnotationMetadata metadata, A
 
 
 
-# 2. YAML configuration file
+# 2. Spring Boot configuration file
 
 
 
@@ -107,10 +107,50 @@ pets: [cat, dog, pig]
 
 
 
-YAML can directly assign value to entity classes, with the following annotation given in entity classes.
+**YAML can directly assign value to entity classes,** with the following annotation given in entity classes.
 
 ```java
 @ConfigurationProperties(prefix = "xxx")
 ```
 
-And it supports loose bind, e.g. lastName can match last-name.
+And it supports loose binding, e.g. lastName can match last-name (`@Value` doesn't support this feature).
+
+
+
+**Config locations are searched in reverse order.** By default, the configured locations are `classpath:/,classpath:/config/,file:./,file:./config/*/,file:./config/`. The resulting search order is the following (classpath means `resources` file in Spring Boot):
+
+1. `file:./config/`
+2. `file:./config/*/`
+3. `file:./`
+4. `classpath:/config/`
+5. `classpath:/`
+
+
+
+**Multi-Environment Configuration**
+
+We may have `application.properties`, `application-dev.properties` , and `application-test.properties` under the same directory. The active configuration file can be choose by adding the following code to `application.properties`:
+
+```properties
+spring.profiles.active=dev
+```
+
+Note here we **only use** `dev` instead of `application-dev.properties`.
+
+
+
+YAML further improves this feature. Mutiple configuration files are unnecessary for YAML, instead, we can write multi-environment configuration in a single file, like
+
+```yaml
+server.port: 8081
+spring.profiles.active: dev
+---
+server.port: 8082
+spring.profiles: dev
+---
+server.port: 8083
+spring.profiles: test
+
+# port 8082 will be opened
+```
+
