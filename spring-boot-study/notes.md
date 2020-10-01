@@ -169,3 +169,9 @@ We can use the following ways to invoke static resources:
 
 
 
+Pages under `resources/templates` can only be jump to through controller.
+
+
+
+**Custom icon (version 2.2.x):** put icon under the folder `static`, and add `<link rel="icon" href="favicon.ico" >` between `<head></head>` tags of `index.html`.
+
