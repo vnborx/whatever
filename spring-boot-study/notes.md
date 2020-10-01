@@ -64,7 +64,7 @@ protected List<String> getCandidateConfigurations(AnnotationMetadata metadata, A
 
 
 
-# 2. Spring Boot configuration file
+# 2. Spring Boot Configuration Files
 
 
 
@@ -153,4 +153,10 @@ spring.profiles: test
 
 # port 8082 will be opened
 ```
+
+
+
+# 3. Web Development Using Spring Boot
+
+
 

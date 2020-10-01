@@ -10,9 +10,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.vnborx</groupId>
-    <artifactId>springboot-02-config</artifactId>
+    <artifactId>spring-boot-02-config</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springboot-02-config</name>
+    <name>spring-boot-02-config</name>
     <description>Demo project for Spring Boot config</description>
 
     <properties>
