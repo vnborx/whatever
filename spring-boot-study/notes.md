@@ -160,3 +160,12 @@ spring.profiles: test
 
 
 
+We can use the following ways to invoke static resources:
+
+* webjars (not recommended): `localhost:8080/webjars/`
+* find in classpath/public, classpath/static, classpath/resources: `localhost:8080/`
+  * priority: resources > static (default) > public
+* change the default path: `spring.mvc.static-path-pattern=/xxx/`
+
+
+
