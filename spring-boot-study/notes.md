@@ -169,9 +169,87 @@ We can use the following ways to invoke static resources:
 
 
 
-Pages under `resources/templates` can only be jump to through controller.
+Pages under `resources/templates` can only be jump to through controller, which needs the following dependency:
+
+```xml
+<dependency>
+    <groupId>org.thymeleaf</groupId>
+    <artifactId>thymeleaf-spring5</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.thymeleaf.extras</groupId>
+    <artifactId>thymeleaf-extras-java8time</artifactId>
+</dependency>
+```
 
 
 
 **Custom icon (version 2.2.x):** put icon under the folder `static`, and add `<link rel="icon" href="favicon.ico" >` between `<head></head>` tags of `index.html`.
+
+
+
+**Thymeleaf**
+
+- Simple expressions:
+  - Variable Expressions: `${...}`
+  - Selection Variable Expressions: `*{...}`
+  - Message Expressions: `#{...}`
+  - Link URL Expressions: `@{...}`
+- Literals
+  - Text literals: `'one text'`, `'Another one!'`,…
+  - Number literals: `0`, `34`, `3.0`, `12.3`,…
+  - Boolean literals: `true`, `false`
+  - Null literal: `null`
+  - Literal tokens: `one`, `sometext`, `main`,…
+- Text operations:
+  - String concatenation: `+`
+  - Literal substitutions: `|The name is ${name}|`
+- Arithmetic operations:
+  - Binary operators: `+`, `-`, `*`, `/`, `%`
+  - Minus sign (unary operator): `-`
+- Boolean operations:
+  - Binary operators: `and`, `or`
+  - Boolean negation (unary operator): `!`, `not`
+- Comparisons and equality:
+  - Comparators: `>`, `<`, `>=`, `<=` (`gt`, `lt`, `ge`, `le`)
+  - Equality operators: `==`, `!=` (`eq`, `ne`)
+- Conditional operators:
+  - If-then: `(if) ? (then)`
+  - If-then-else: `(if) ? (then) : (else)`
+  - Default: `(value) ?: (defaultvalue)`
+
+All these features can be combined and nested:
+
+```html
+'User is of type ' + (${user.isAdmin()} ? 'Administrator' : (${user.type} ?: 'Unknown'))
+```
+
+
+
+All Thymeleaf attributes define a numeric precedence, which establishes the order in which they are executed in the tag. This order is:
+
+| Order | Feature                         | Attributes                                 |
+| :---- | :------------------------------ | :----------------------------------------- |
+| 1     | Fragment inclusion              | `th:include` `th:replace`                  |
+| 2     | Fragment iteration              | `th:each`                                  |
+| 3     | Conditional evaluation          | `th:if` `th:unless` `th:switch` `th:case`  |
+| 4     | Local variable definition       | `th:object` `th:with`                      |
+| 5     | General attribute modification  | `th:attr` `th:attrprepend` `th:attrappend` |
+| 6     | Specific attribute modification | `th:value` `th:href` `th:src` `...`        |
+| 7     | Text (tag body modification)    | `th:text` `th:utext`                       |
+| 8     | Fragment specification          | `th:fragment`                              |
+| 9     | Fragment removal                | `th:remove`                                |
+
+
+
+Things can be retrieved in html by:
+
+`<div th:text="${msg}"></div>`
+
+```html
+<body>
+<div th:text="${msg}"></div>
+<h3 th:each="user: ${users}" th:text="${user}"></h3>
+</body>
+```
 
