@@ -190,6 +190,14 @@ Pages under `resources/templates` can only be jump to through controller, which 
 
 **Thymeleaf**
 
+XML namespace must be used as:
+
+```html
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  ...
+</html>
+```
+
 - Simple expressions:
   - Variable Expressions: `${...}`
   - Selection Variable Expressions: `*{...}`
@@ -247,9 +255,21 @@ Things can be retrieved in html by:
 `<div th:text="${msg}"></div>`
 
 ```html
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link th:href="@{css/example.css}" rel="stylesheet" >
+</head>
 <body>
 <div th:text="${msg}"></div>
 <h3 th:each="user: ${users}" th:text="${user}"></h3>
 </body>
+</html>
 ```
+
+
+
+**i18n(international)**
+
+* We need to config i18n files
+* A component (bean) `LocaleResolver` can be written for changing the language of web pages, which also needs to be injected into spring using `@Bean`.
 
