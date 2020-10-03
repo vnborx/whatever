@@ -268,7 +268,7 @@ Things can be retrieved in html by:
 
 
 
-**i18n(international)**
+**i18n(internationalization)**
 
 * We need to config i18n files
 * A component (bean) `LocaleResolver` can be written for changing the language of web pages, which also needs to be injected into spring using `@Bean`.
