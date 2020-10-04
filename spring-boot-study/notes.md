@@ -203,6 +203,7 @@ XML namespace must be used as:
   - Selection Variable Expressions: `*{...}`
   - Message Expressions: `#{...}`
   - Link URL Expressions: `@{...}`
+  - Fragment Expressions: `~{...}`
 - Literals
   - Text literals: `'one text'`, `'Another one!'`,…
   - Number literals: `0`, `34`, `3.0`, `12.3`,…
@@ -238,7 +239,7 @@ All Thymeleaf attributes define a numeric precedence, which establishes the orde
 
 | Order | Feature                         | Attributes                                 |
 | :---- | :------------------------------ | :----------------------------------------- |
-| 1     | Fragment inclusion              | `th:include` `th:replace`                  |
+| 1     | Fragment inclusion              | `th:insert `th:replace`                    |
 | 2     | Fragment iteration              | `th:each`                                  |
 | 3     | Conditional evaluation          | `th:if` `th:unless` `th:switch` `th:case`  |
 | 4     | Local variable definition       | `th:object` `th:with`                      |
@@ -268,8 +269,53 @@ Things can be retrieved in html by:
 
 
 
-**i18n(internationalization)**
+**i18n (internationalization)**
 
 * We need to config i18n files
 * A component (bean) `LocaleResolver` can be written for changing the language of web pages, which also needs to be injected into spring using `@Bean`.
+
+
+
+**Extract common page components**
+
+1. `th:fragment="navbar"`
+2. `th:replace"~{common/common::sidebar')`
+3. arguments can be passed like `th:replace"~{common/common::sidebar(active='list.html')`
+
+
+
+**CRUD (create, retrieve, update, delete)**
+
+```html
+<!-- Example of retrieving all data -->
+<table class="table">
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>name</th>
+			<th>email</th>
+      <th>gender</th>
+      <th>department</th>
+      <th>birth</th>
+		</tr>
+	</thead>
+	<tbody>
+    <!-- Traversal -->
+		<tr th:each="emp:${emps}">
+			<td>[[${emp.getId()}]]</td>
+			<td th:text="${emp.getName()}"></td>
+			<td th:text="${emp.getEmail()}"></td>
+      <!-- Transform gender data -->
+			<td th:text="${emp.getGender()==0?'Female':'Male'}"></td>
+    	<td th:text="${emp.department.getName()}"></td> 
+      <!-- Format date -->
+    	<td th:text="${#dates.format(emp.getBirth(), 'dd/MMM/yyyy')}"></td>
+    	<td>
+    		<button class="btn btn-sm btn-primary">Edit</button>
+    		<button class="btn btn-sm btn-danger">Delete</button>
+    	</td>
+		</tr>
+	</tbody>
+</table>
+```
 
