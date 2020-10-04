@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html  lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,30 +34,33 @@
       <div class="container">
         <div class="form-outer text-center d-flex align-items-center">
           <div class="form-inner">
-            <div class="logo text-uppercase"><span>Dash</span><strong class="text-primary">Express</strong></div>
+            <div class="logo text-uppercase"><span>Bootstrap</span><strong class="text-primary">Dashboard</strong></div>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
-            <form class="text-left form-validate">
+<!--            <form method="get" class="text-left form-validate">-->
+            <form class="text-left form-validate" th:action="@{/user/login}">
+              <p style="color:red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
               <div class="form-group-material">
-                <input id="register-username" type="text" name="registerUsername" required data-msg="Please enter your username" class="input-material">
-                <label for="register-username" class="label-material" th:text="#{login.username}">Username</label>
+                <input id="login-username" type="text" name="username" required data-msg="Please enter your username" class="input-material">
+                <label for="login-username" class="label-material" th:text="#{login.username}"></label>
               </div>
               <div class="form-group-material">
-                <input id="register-password" type="password" name="registerPassword" required data-msg="Please enter your password" class="input-material">
-                <label for="register-password" class="label-material" th:text="#{login.password}">Password</label>
-              </div>
-              <div class="form-group terms-conditions text-center">
-                <input id="register-agree" name="registerAgree" type="checkbox" required value="1" data-msg="Your agreement is required" class="form-control-custom">
-                <label for="register-agree">I agree with the terms and policy</label>
+                <input id="login-password" type="password" name="password" required data-msg="Please enter your password" class="input-material">
+                <label for="login-password" class="label-material" th:text="#{login.password}"></label>
               </div>
               <div class="form-group text-center">
-                <input id="register" type="submit" value="Register" class="btn btn-primary">
+<!--                <a id="login" href="index.html" class="btn btn-primary">Login</a>-->
+                <button class="btn btn-primary" type="submit">Login</button>
+                <!-- This should be submit button but I replaced it with <a> for demo purposes-->
               </div>
-            </form><small>Already have an account? </small><a href="login.html" class="signup">Login</a>
+            </form><a href="#" class="forgot-pass">Forgot Password?</a><small>Do not have an account? </small><a href="register.html" class="signup">Signup</a>
+            <div>
+              <a th:href="@{/index.html(l='zh_CN')}">中文</a>
+              <a th:href="@{/index.html(l='en_US')}">English</a>
+            </div>
           </div>
           <div class="copyrights text-center">
-            <p>Design by Bootstrapious</p>
-            <a th:href="@{/index.html(l='zh_CN')}">中文</a>
-            <a th:href="@{/index.html(l='en_US')}">English</a>
+            
+            
           </div>
         </div>
       </div>
