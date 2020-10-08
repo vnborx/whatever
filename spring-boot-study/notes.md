@@ -286,6 +286,8 @@ Things can be retrieved in html by:
 
 **CRUD (create, retrieve, update, delete)**
 
+1. Retrieve
+
 ```html
 <!-- Example of retrieving all data -->
 <table class="table">
@@ -318,4 +320,34 @@ Things can be retrieved in html by:
 	</tbody>
 </table>
 ```
+
+2. Create
+
+   1. Submit by button
+   2. Jump to the page for creating a new entry
+   3. Creation succeeded
+   4. Jump back to the list page
+
+   **Something to notice:**
+
+   * The default receiving format of date is split by '/' (dd/MM/yyyy), if we want to change it as '-', we need to set `spring.mvc.date-format=MM-dd-yyyy`.
+   * If a object contains another object, e.g. employee has a field 'department', as we cannot directly add a department object on frond-end, we can add one field of the object being contained like **(Note 'name' must match this field)**:
+
+   ```html
+   <select class="form-control" name="department.id">
+       <option th:each="dept:${departments}" th:text="${dept.getName()}" th:value="${dept.getId()}"></option>
+   </select>
+   ```
+
+   ```java
+   public void add(Employee employee) {
+       if (employee.getId() == null)
+           employee.setId(initId++);
+   
+       employee.setDepartment(departmentDao.getDepartmentById(employee.getDepartment().getId()));
+       employees.put(employee.getId(), employee);
+   }
+   ```
+
+3. 
 
